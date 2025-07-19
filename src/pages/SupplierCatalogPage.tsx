@@ -152,7 +152,7 @@ const SupplierCatalogPage = () => {
     <div className="bg-gray-50 min-h-screen">
       <div className="mx-auto max-w-7xl p-6 space-y-6 animate-fade-in">
         <div className="mt-6">
-          <h1 className="text-3xl font-bold text-gray-900">{t('supplierCatalog')}</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Leverantörs Katalog</h1>
           <p className="text-gray-600 mt-2">
             Hitta och jämför leverantörer för dina inköpsbehov
           </p>
