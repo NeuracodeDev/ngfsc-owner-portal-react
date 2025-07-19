@@ -1,22 +1,25 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useTranslation } from 'react-i18next';
 
 const SustainabilityReportPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Sustainability Report</h1>
+        <h1 className="text-3xl font-bold text-foreground">{t('sustainabilityReport')}</h1>
         <p className="text-muted-foreground mt-2">
-          Track your environmental impact and sustainability metrics
+          {t('trackEnvironmentalImpact')}
         </p>
       </div>
 
       <Card className="shadow-elevated border-0">
         <CardHeader>
-          <CardTitle>Environmental Impact</CardTitle>
+          <CardTitle>{t('environmentalImpact')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8 text-muted-foreground">
-            Sustainability reporting coming soon...
+            {t('sustainabilityReportingSoon')}
           </div>
         </CardContent>
       </Card>

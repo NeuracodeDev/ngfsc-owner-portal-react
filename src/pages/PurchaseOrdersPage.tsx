@@ -1,31 +1,34 @@
 import { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
+import { useTranslation } from 'react-i18next';
 import { Plus } from 'lucide-react';
 
 const PurchaseOrdersPage = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="space-y-6 animate-fade-in">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Purchase Orders</h1>
+          <h1 className="text-3xl font-bold text-foreground">{t('purchaseOrders')}</h1>
           <p className="text-muted-foreground mt-2">
-            Manage supplier purchase orders and procurement
+            {t('managePurchaseOrders')}
           </p>
         </div>
         <Button className="bg-gradient-primary">
           <Plus className="h-4 w-4 mr-2" />
-          Create PO
+          {t('createPO')}
         </Button>
       </div>
 
       <Card className="shadow-elevated border-0">
         <CardHeader>
-          <CardTitle>Purchase Orders</CardTitle>
+          <CardTitle>{t('purchaseOrders')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="text-center py-8 text-muted-foreground">
-            Purchase orders management coming soon...
+            {t('purchaseOrdersSoon')}
           </div>
         </CardContent>
       </Card>

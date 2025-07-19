@@ -22,13 +22,15 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 import { useToast } from '@/hooks/use-toast';
+import { useTranslation } from 'react-i18next';
 import { Save, Trash2 } from 'lucide-react';
 
 const SettingsPage = () => {
   const [slackId, setSlackId] = useState('');
-  const [language, setLanguage] = useState('en');
+  const [language, setLanguage] = useState('sv');
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const { t } = useTranslation();
 
   const handleSaveSettings = async () => {
     setLoading(true);
@@ -37,13 +39,13 @@ const SettingsPage = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
-        title: "Settings saved",
-        description: "Your preferences have been updated successfully.",
+        title: t('settingsSaved'),
+        description: t('settingsSavedDescription'),
       });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to save settings. Please try again.",
+        title: t('error'),
+        description: t('saveSettingsError'),
         variant: "destructive",
       });
     } finally {
@@ -57,14 +59,14 @@ const SettingsPage = () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       
       toast({
-        title: "Store deletion initiated",
-        description: "Your store deletion request has been submitted. You will receive a confirmation email.",
+        title: t('storeDeletionInitiated'),
+        description: t('storeDeletionDescription'),
         variant: "destructive",
       });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Failed to delete store. Please contact support.",
+        title: t('error'),
+        description: t('deleteStoreError'),
         variant: "destructive",
       });
     }
@@ -73,9 +75,9 @@ const SettingsPage = () => {
   return (
     <div className="space-y-6 max-w-2xl">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Settings</h1>
+        <h1 className="text-3xl font-bold text-foreground">{t('settings')}</h1>
         <p className="text-muted-foreground">
-          Manage your store preferences and account settings
+          {t('managePreferences')}
         </p>
       </div>
 
@@ -83,19 +85,19 @@ const SettingsPage = () => {
         {/* Notifications Settings */}
         <Card className="shadow-soft">
           <CardHeader>
-            <CardTitle>Notifications</CardTitle>
+            <CardTitle>{t('notifications')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="slack-id">Slack User ID</Label>
+              <Label htmlFor="slack-id">{t('slackUserId')}</Label>
               <Input
                 id="slack-id"
-                placeholder="Enter your Slack user ID (e.g., U1234567890)"
+                placeholder={t('slackPlaceholder')}
                 value={slackId}
                 onChange={(e) => setSlackId(e.target.value)}
               />
               <p className="text-sm text-muted-foreground">
-                Get AI suggestions and alerts sent directly to your Slack
+                {t('slackDescription')}
               </p>
             </div>
           </CardContent>
@@ -104,16 +106,17 @@ const SettingsPage = () => {
         {/* Language Settings */}
         <Card className="shadow-soft">
           <CardHeader>
-            <CardTitle>Preferences</CardTitle>
+            <CardTitle>{t('preferences')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="language">Preferred Language</Label>
+              <Label htmlFor="language">{t('preferredLanguage')}</Label>
               <Select value={language} onValueChange={setLanguage}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
+                  <SelectItem value="sv">Svenska</SelectItem>
                   <SelectItem value="en">English</SelectItem>
                   <SelectItem value="es">Español</SelectItem>
                   <SelectItem value="fr">Français</SelectItem>
@@ -123,7 +126,7 @@ const SettingsPage = () => {
                 </SelectContent>
               </Select>
               <p className="text-sm text-muted-foreground">
-                Choose your preferred language for the dashboard interface
+                {t('languageDescription')}
               </p>
             </div>
           </CardContent>
@@ -137,45 +140,43 @@ const SettingsPage = () => {
             className="bg-gradient-primary"
           >
             <Save className="h-4 w-4 mr-2" />
-            {loading ? 'Saving...' : 'Save Settings'}
+            {loading ? t('saving') : t('saveSettings')}
           </Button>
         </div>
 
         {/* Danger Zone */}
         <Card className="shadow-soft border-destructive">
           <CardHeader>
-            <CardTitle className="text-destructive">Danger Zone</CardTitle>
+            <CardTitle className="text-destructive">{t('dangerZone')}</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-2">
-              <h4 className="font-medium text-foreground">Delete Store</h4>
+              <h4 className="font-medium text-foreground">{t('deleteStore')}</h4>
               <p className="text-sm text-muted-foreground">
-                Permanently delete your store and all associated data. This action cannot be undone.
+                {t('deleteStoreDescription')}
               </p>
               
               <AlertDialog>
                 <AlertDialogTrigger asChild>
                   <Button variant="destructive" size="sm">
                     <Trash2 className="h-4 w-4 mr-2" />
-                    Delete Store
+                    {t('deleteStore')}
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{t('areYouSure')}</AlertDialogTitle>
                     <AlertDialogDescription>
-                      This action cannot be undone. This will permanently delete your store,
-                      remove all your data from our servers, and cancel any active subscriptions.
-                      All inventory, sales data, and AI suggestions will be lost forever.
+                      {t('deleteConfirmation')}
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogCancel>{t('cancel')}</AlertDialogCancel>
                     <AlertDialogAction
                       onClick={handleDeleteStore}
                       className="bg-destructive text-destructive-foreground hover:bg-destructive/90"
                     >
-                      Yes, delete my store
+                      {t('yesDeleteStore')}
                     </AlertDialogAction>
                   </AlertDialogFooter>
                 </AlertDialogContent>

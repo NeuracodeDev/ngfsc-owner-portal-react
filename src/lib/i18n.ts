@@ -155,7 +155,6 @@ const resources = {
       
       // Purchase Orders
       purchaseOrdersManagement: 'Inköpsorderhantering',
-      createPO: 'Skapa inköpsorder',
       poNumber: 'Inköpsorder #',
       created: 'Skapad',
       eta: 'Förväntad leverans',
@@ -228,6 +227,51 @@ const resources = {
       edit: 'Redigera',
       view: 'Visa',
       welcome: 'Välkommen tillbaka',
+      
+      // Additional Settings Page
+      managePreferences: 'Hantera dina butiksreferenser och kontoinställningar',
+      slackUserId: 'Slack Användar-ID',
+      slackPlaceholder: 'Ange ditt Slack användar-ID (t.ex. U1234567890)',
+      slackDescription: 'Få AI-förslag och varningar skickade direkt till din Slack',
+      preferredLanguage: 'Föredraget språk',
+      languageDescription: 'Välj ditt föredragna språk för instrumentpanelsgränssnittet',
+      saving: 'Sparar...',
+      deleteStore: 'Ta bort butik',
+      deleteStoreDescription: 'Ta bort din butik permanent och all tillhörande data. Denna åtgärd kan inte ångras.',
+      areYouSure: 'Är du helt säker?',
+      deleteConfirmation: 'Denna åtgärd kan inte ångras. Detta kommer permanent att radera din butik, ta bort all din data från våra servrar och avbryta alla aktiva prenumerationer. Alla lager-, försäljningsdata och AI-förslag kommer att gå förlorade för alltid.',
+      yesDeleteStore: 'Ja, ta bort min butik',
+      
+      // Report Pages Additional
+      trackEnvironmentalImpact: 'Spåra din miljöpåverkan och hållbarhetsmått',
+      environmentalImpact: 'Miljöpåverkan',
+      sustainabilityReportingSoon: 'Hållbarhetsrapportering kommer snart...',
+      manageCompliance: 'Hantera HACCP-loggar, allergenrapporter och efterlevnadsdokumentation',
+      complianceDocumentation: 'Efterlevnadsdokumentation',
+      complianceManagementSoon: 'Efterlevnadshantering kommer snart...',
+      
+      // Purchase Orders Page Additional
+      managePurchaseOrders: 'Hantera leverantörsinköpsorder och upphandling',
+      createPO: 'Skapa IO',
+      purchaseOrdersSoon: 'Hantering av inköpsorder kommer snart...',
+      
+      // Supplier Catalog Page Additional
+      browseSuppliers: 'Bläddra och hantera ditt leverantörsnätverk',
+      supplierCatalogSoon: 'Leverantörskatalog kommer snart...',
+      
+      // AI History Page Additional
+      trackAISuggestions: 'Spåra AI-förslag och deras resultat',
+      aiSuggestionHistory: 'AI-förslagshistorik',
+      aiHistorySoon: 'AI-historikspårning kommer snart...',
+      
+      // Toast messages
+      settingsSaved: 'Inställningar sparade',
+      settingsSavedDescription: 'Dina preferenser har uppdaterats framgångsrikt.',
+      error: 'Fel',
+      saveSettingsError: 'Misslyckades att spara inställningar. Försök igen.',
+      storeDeletionInitiated: 'Radering av butik initierad',
+      storeDeletionDescription: 'Din begäran om radering av butik har skickats. Du kommer att få ett bekräftelsemail.',
+      deleteStoreError: 'Misslyckades att ta bort butik. Kontakta support.',
     }
   }
 };
