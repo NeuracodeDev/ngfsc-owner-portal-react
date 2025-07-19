@@ -80,7 +80,23 @@ const HomeDashboard = () => {
                 </span>
               </div>
             </div>
-            {/* Mini Sparkline */}
+            {/* Comparison Badge */}
+            <div className="flex items-center justify-between">
+              <div className="text-xs text-gray-500">
+                vs {t('yesterday')}
+              </div>
+              {salesData && (
+                <div className={`text-xs px-2 py-1 rounded-full ${
+                  salesData.today.change >= 0 
+                    ? 'bg-green-50 text-green-700 border border-green-200' 
+                    : 'bg-red-50 text-red-700 border border-red-200'
+                }`}>
+                  {salesData.today.change >= 0 ? '+' : ''}{salesData.today.change.toFixed(1)}%
+                </div>
+              )}
+            </div>
+            
+            {/* Enhanced Sparkline */}
             {salesData?.today.trend && (
               <div className="h-12 w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -89,8 +105,9 @@ const HomeDashboard = () => {
                       type="monotone" 
                       dataKey="value" 
                       stroke="hsl(var(--success))" 
-                      strokeWidth={2}
+                      strokeWidth={2.5}
                       dot={false}
+                      strokeLinecap="round"
                     />
                   </LineChart>
                 </ResponsiveContainer>
@@ -127,7 +144,23 @@ const HomeDashboard = () => {
                 </span>
               </div>
             </div>
-            {/* Mini Sparkline */}
+            {/* Comparison Badge */}
+            <div className="flex items-center justify-between">
+              <div className="text-xs text-gray-500">
+                vs {t('lastWeek')}
+              </div>
+              {salesData && (
+                <div className={`text-xs px-2 py-1 rounded-full ${
+                  salesData.thisWeek.change >= 0 
+                    ? 'bg-green-50 text-green-700 border border-green-200' 
+                    : 'bg-red-50 text-red-700 border border-red-200'
+                }`}>
+                  {salesData.thisWeek.change >= 0 ? '+' : ''}{salesData.thisWeek.change.toFixed(1)}%
+                </div>
+              )}
+            </div>
+            
+            {/* Enhanced Sparkline */}
             {salesData?.thisWeek.trend && (
               <div className="h-12 w-full">
                 <ResponsiveContainer width="100%" height="100%">
@@ -136,8 +169,9 @@ const HomeDashboard = () => {
                       type="monotone" 
                       dataKey="value" 
                       stroke="hsl(var(--info))" 
-                      strokeWidth={2}
+                      strokeWidth={2.5}
                       dot={false}
+                      strokeLinecap="round"
                     />
                   </LineChart>
                 </ResponsiveContainer>

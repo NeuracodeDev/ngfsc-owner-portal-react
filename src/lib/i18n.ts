@@ -137,6 +137,8 @@ const resources = {
       salesThisWeek: 'Försäljning denna vecka',
       ordersCount: 'beställningar',
       avg: 'snitt',
+      yesterday: 'igår',
+      lastWeek: 'förra veckan',
       aiSuggestions: 'AI-förslag',
       approve: 'Godkänn',
       decline: 'Avslå',
