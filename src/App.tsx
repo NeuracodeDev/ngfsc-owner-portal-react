@@ -14,6 +14,13 @@ const HomeDashboard = lazy(() => import("./pages/HomeDashboard"));
 const InventoryPage = lazy(() => import("./pages/InventoryPage"));
 const SurplusPage = lazy(() => import("./pages/SurplusPage"));
 const SettingsPage = lazy(() => import("./pages/SettingsPage"));
+const OrdersPage = lazy(() => import("./pages/OrdersPage"));
+const PurchaseOrdersPage = lazy(() => import("./pages/PurchaseOrdersPage"));
+const SupplierCatalogPage = lazy(() => import("./pages/SupplierCatalogPage"));
+const ProductDetailPage = lazy(() => import("./pages/ProductDetailPage"));
+const AIHistoryPage = lazy(() => import("./pages/AIHistoryPage"));
+const SustainabilityReportPage = lazy(() => import("./pages/SustainabilityReportPage"));
+const ComplianceDocsPage = lazy(() => import("./pages/ComplianceDocsPage"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -40,8 +47,15 @@ const App = () => (
             {/* Dashboard routes - no auth protection */}
             <Route path="/app" element={<DashboardLayout />}>
               <Route index element={<HomeDashboard />} />
+              <Route path="orders" element={<OrdersPage />} />
+              <Route path="purchase-orders" element={<PurchaseOrdersPage />} />
               <Route path="inventory" element={<InventoryPage />} />
+              <Route path="inventory/:sku" element={<ProductDetailPage />} />
+              <Route path="suppliers" element={<SupplierCatalogPage />} />
               <Route path="surplus" element={<SurplusPage />} />
+              <Route path="ai-history" element={<AIHistoryPage />} />
+              <Route path="reports/sustainability" element={<SustainabilityReportPage />} />
+              <Route path="compliance" element={<ComplianceDocsPage />} />
               <Route path="settings" element={<SettingsPage />} />
             </Route>
             
