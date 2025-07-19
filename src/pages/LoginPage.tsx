@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -11,30 +12,23 @@ import { Loader2, Leaf } from 'lucide-react';
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { login, loginLoading, isAuthenticated } = useAuth();
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
-
-  // Redirect if already authenticated
-  if (isAuthenticated) {
-    return <Navigate to="/app" replace />;
-  }
+  const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
     
-    try {
-      await login({ email, password });
+    // Simulate login delay
+    setTimeout(() => {
+      setLoading(false);
       toast({
-        title: "Welcome back!",
-        description: "Successfully logged in to your dashboard.",
+        title: "Demo Mode",
+        description: "Redirecting to dashboard - no auth required!",
       });
-    } catch (error) {
-      toast({
-        title: "Login failed",
-        description: "Please check your credentials and try again.",
-        variant: "destructive",
-      });
-    }
+      navigate('/app');
+    }, 1000);
   };
 
   return (
@@ -64,8 +58,7 @@ const LoginPage = () => {
                 placeholder="Enter your email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
-                disabled={loginLoading}
+                disabled={loading}
               />
             </div>
             <div className="space-y-2">
@@ -76,27 +69,26 @@ const LoginPage = () => {
                 placeholder="Enter your password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
-                disabled={loginLoading}
+                disabled={loading}
               />
             </div>
             <Button 
               type="submit" 
               className="w-full bg-gradient-primary" 
-              disabled={loginLoading}
+              disabled={loading}
             >
-              {loginLoading ? (
+              {loading ? (
                 <>
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                  Signing in...
+                  Redirecting...
                 </>
               ) : (
-                'Sign In'
+                'Go to Dashboard'
               )}
             </Button>
           </form>
           <div className="mt-6 text-center text-sm text-muted-foreground">
-            Demo credentials: owner@ngfsc.com / any password
+            Demo mode - click "Go to Dashboard" to explore the app
           </div>
         </CardContent>
       </Card>

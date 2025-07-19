@@ -25,21 +25,6 @@ const LoadingFallback = () => (
   </div>
 );
 
-// Protected route wrapper
-const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
-  const { isAuthenticated, loading } = useAuth();
-
-  if (loading) {
-    return <LoadingFallback />;
-  }
-
-  if (!isAuthenticated) {
-    return <Navigate to="/login" replace />;
-  }
-
-  return <>{children}</>;
-};
-
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
@@ -48,18 +33,14 @@ const App = () => (
       <BrowserRouter>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
-            {/* Redirect root to app */}
+            {/* Redirect root to app dashboard */}
             <Route path="/" element={<Navigate to="/app" replace />} />
             
-            {/* Login route */}
+            {/* Optional login route (no auth required) */}
             <Route path="/login" element={<LoginPage />} />
             
-            {/* Protected dashboard routes */}
-            <Route path="/app" element={
-              <ProtectedRoute>
-                <DashboardLayout />
-              </ProtectedRoute>
-            }>
+            {/* Dashboard routes - no auth protection */}
+            <Route path="/app" element={<DashboardLayout />}>
               <Route index element={<HomeDashboard />} />
               <Route path="inventory" element={<InventoryPage />} />
               <Route path="surplus" element={<SurplusPage />} />

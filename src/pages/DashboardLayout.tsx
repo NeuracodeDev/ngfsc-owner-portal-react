@@ -19,11 +19,15 @@ import {
 } from "@/components/ui/select"
 
 const DashboardLayout = () => {
-  const { user, logout } = useAuth();
+  // Mock user data for demo
+  const mockUser = {
+    name: 'John Smith',
+    storeName: 'Fresh Market Pro'
+  };
   const navigate = useNavigate();
 
   const handleLogout = async () => {
-    await logout();
+    // For demo, just navigate to login
     navigate('/login');
   };
 
@@ -94,10 +98,10 @@ const DashboardLayout = () => {
         <header className="h-16 bg-card border-b border-border px-6 flex items-center justify-between shadow-soft">
           <div>
             <h2 className="text-xl font-semibold text-foreground">
-              {user?.storeName}
+              {mockUser?.storeName}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Welcome back, {user?.name}
+              Welcome back, {mockUser?.name}
             </p>
           </div>
           
