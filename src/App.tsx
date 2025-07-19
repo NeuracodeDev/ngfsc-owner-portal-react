@@ -28,8 +28,6 @@ const LoadingFallback = () => (
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
-      <Sonner />
       <BrowserRouter>
         <Suspense fallback={<LoadingFallback />}>
           <Routes>
