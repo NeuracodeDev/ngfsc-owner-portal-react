@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useSurplus } from '@/hooks/useSurplus';
 import { useInventory } from '@/hooks/useInventory';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -34,6 +35,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Plus, Loader2 } from 'lucide-react';
 
 const SurplusPage = () => {
+  const { t } = useTranslation();
   const { listings, loading, createLoading, createListing } = useSurplus();
   const { inventory } = useInventory();
   const { toast } = useToast();
@@ -105,9 +107,9 @@ const SurplusPage = () => {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Surplus Marketplace</h1>
+          <h1 className="text-3xl font-bold text-foreground">{t('surplusManagement')}</h1>
           <p className="text-muted-foreground">
-            Manage surplus inventory and create listings
+            Hantera överskottslager och skapa annonser
           </p>
         </div>
         
@@ -115,15 +117,15 @@ const SurplusPage = () => {
           <DialogTrigger asChild>
             <Button className="bg-gradient-primary">
               <Plus className="h-4 w-4 mr-2" />
-              Create Listing
+              {t('createListing')}
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-md">
             <form onSubmit={handleSubmit}>
               <DialogHeader>
-                <DialogTitle>Create Surplus Listing</DialogTitle>
+                <DialogTitle>Skapa överskottsannons</DialogTitle>
                 <DialogDescription>
-                  List surplus inventory on the marketplace to reduce waste.
+                  Lista överskottslager på marknadsplatsen för att minska svinn.
                 </DialogDescription>
               </DialogHeader>
               

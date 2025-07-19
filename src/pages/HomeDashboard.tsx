@@ -44,9 +44,9 @@ const HomeDashboard = () => {
   return (
     <div className="space-y-8 animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Dashboard Overview</h1>
+        <h1 className="text-3xl font-bold text-foreground">{t('dashboard')}</h1>
         <p className="text-muted-foreground mt-2">
-          Monitor your store performance and AI recommendations
+          Övervaka din butiks prestanda och AI-rekommendationer
         </p>
       </div>
 

@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useSuggestions } from '@/hooks/useSuggestions';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -14,6 +15,7 @@ import {
 } from 'lucide-react';
 
 const SuggestionList = () => {
+  const { t } = useTranslation();
   const { suggestions, loading, actionLoading, approveSuggestion, declineSuggestion } = useSuggestions();
   const { toast } = useToast();
 
@@ -81,7 +83,7 @@ const SuggestionList = () => {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>AI Suggestions</CardTitle>
+          <CardTitle>{t('aiSuggestions')}</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="flex items-center justify-center py-8">
@@ -96,7 +98,7 @@ const SuggestionList = () => {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center space-x-2">
-          <span>AI Suggestions</span>
+          <span>{t('aiSuggestions')}</span>
           {suggestions.length > 0 && (
             <Badge variant="secondary">{suggestions.length}</Badge>
           )}
@@ -105,7 +107,7 @@ const SuggestionList = () => {
       <CardContent>
         {suggestions.length === 0 ? (
           <div className="text-center py-8 text-muted-foreground">
-            No pending suggestions at the moment.
+            Inga väntande förslag för tillfället.
           </div>
         ) : (
           <div className="space-y-4">
@@ -150,7 +152,7 @@ const SuggestionList = () => {
                     ) : (
                       <Check className="h-4 w-4" />
                     )}
-                    Approve
+                    {t('approve')}
                   </Button>
                   
                   <Button
@@ -161,7 +163,7 @@ const SuggestionList = () => {
                     className="text-destructive border-destructive hover:bg-destructive hover:text-destructive-foreground"
                   >
                     <X className="h-4 w-4" />
-                    Decline
+                    {t('decline')}
                   </Button>
                 </div>
               </div>

@@ -143,9 +143,9 @@ const OrdersPage = () => {
   return (
     <div className="space-y-6 animate-fade-in">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Orders Management</h1>
+        <h1 className="text-3xl font-bold text-foreground">{t('ordersManagement')}</h1>
         <p className="text-muted-foreground mt-2">
-          Track and manage customer orders
+          Spåra och hantera kundbeställningar
         </p>
       </div>
 
@@ -204,11 +204,11 @@ const OrdersPage = () => {
       <Card className="shadow-elevated border-0">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>Recent Orders</CardTitle>
+            <CardTitle>Senaste beställningar</CardTitle>
             <div className="relative max-w-sm">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input
-                placeholder="Search orders..."
+                placeholder="Sök beställningar..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="pl-10"

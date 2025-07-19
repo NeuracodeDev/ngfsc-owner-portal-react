@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next';
 import { useInventory } from '@/hooks/useInventory';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -13,6 +14,7 @@ import {
 import { Search, Loader2, AlertTriangle, CheckCircle } from 'lucide-react';
 
 const InventoryPage = () => {
+  const { t } = useTranslation();
   const { inventory, loading, searchTerm, search } = useInventory();
 
   const formatCurrency = (amount: number) => {
@@ -47,19 +49,19 @@ const InventoryPage = () => {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-foreground">Inventory Management</h1>
+        <h1 className="text-3xl font-bold text-foreground">{t('inventoryManagement')}</h1>
         <p className="text-muted-foreground">
-          Monitor stock levels and manage your product inventory
+          Övervaka lagernivåer och hantera ditt produktlager
         </p>
       </div>
 
       <Card className="shadow-soft">
         <CardHeader>
-          <CardTitle>Product Inventory</CardTitle>
+          <CardTitle>{t('product')} {t('inventory')}</CardTitle>
           <div className="relative max-w-sm">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input
-              placeholder="Search products, SKU, or category..."
+              placeholder={t('searchProducts')}
               value={searchTerm}
               onChange={(e) => search(e.target.value)}
               className="pl-10"
@@ -76,20 +78,20 @@ const InventoryPage = () => {
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead>Product</TableHead>
-                    <TableHead>SKU</TableHead>
-                    <TableHead>Stock on Hand</TableHead>
-                    <TableHead>Days of Cover</TableHead>
-                    <TableHead>Unit Price</TableHead>
-                    <TableHead>Supplier</TableHead>
-                    <TableHead>Status</TableHead>
+                    <TableHead>{t('product')}</TableHead>
+                    <TableHead>{t('sku')}</TableHead>
+                    <TableHead>{t('stockOnHand')}</TableHead>
+                    <TableHead>{t('daysOfCover')}</TableHead>
+                    <TableHead>{t('unitPrice')}</TableHead>
+                    <TableHead>{t('supplier')}</TableHead>
+                    <TableHead>{t('status')}</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
                   {inventory.length === 0 ? (
                     <TableRow>
                       <TableCell colSpan={7} className="text-center py-8 text-muted-foreground">
-                        {searchTerm ? 'No products found matching your search.' : 'No inventory items found.'}
+                        {searchTerm ? 'Inga produkter hittades för din sökning.' : 'Inga lagerartiklar hittades.'}
                       </TableCell>
                     </TableRow>
                   ) : (
@@ -126,7 +128,7 @@ const InventoryPage = () => {
                               item.daysOfCover <= 2 ? 'text-destructive' : 
                               item.daysOfCover <= 5 ? 'text-warning' : 'text-success'
                             }`}>
-                              {item.daysOfCover} days
+                              {item.daysOfCover} dagar
                             </span>
                           </TableCell>
                           <TableCell>{formatCurrency(item.unitPrice)}</TableCell>
