@@ -48,16 +48,16 @@ const InventoryPage = () => {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">{t('inventoryManagement')}</h1>
-        <p className="text-muted-foreground">
+      <div className="mt-6">{/* Added top margin for better spacing */}
+        <h1 className="text-3xl font-bold text-gray-900">{t('inventoryManagement')}</h1>{/* Darker heading color */}
+        <p className="text-gray-600 mt-2">{/* More neutral secondary text */}
           Övervaka lagernivåer och hantera ditt produktlager
         </p>
       </div>
 
       <Card className="shadow-soft">
         <CardHeader>
-          <CardTitle>{t('product')} {t('inventory')}</CardTitle>
+          <CardTitle className="text-lg font-semibold text-gray-900">{t('product')} {t('inventory')}</CardTitle>{/* Better typography */}
           <div className="relative max-w-sm">
             <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
             <Input

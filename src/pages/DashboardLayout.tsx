@@ -63,35 +63,35 @@ const DashboardLayout = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background flex w-full">
-      {/* Fixed Sidebar */}
-      <aside className="w-60 bg-card border-r border-border flex flex-col shadow-soft">
+    <div className="min-h-screen bg-gray-50 flex w-full">
+      {/* Enhanced Sidebar */}
+      <aside className="w-60 bg-white border-r border-gray-200 flex flex-col shadow-sm">
         {/* Logo */}
-        <div className="p-6 border-b border-border">
+        <div className="p-6 border-b border-gray-200">
           <div className="flex items-center space-x-3">
             <div className="p-2 bg-gradient-primary rounded-lg">
               <Leaf className="h-5 w-5 text-primary-foreground" />
             </div>
             <div>
               <h1 className="text-lg font-bold text-primary">NGFSC</h1>
-              <p className="text-xs text-muted-foreground">Owner Dashboard</p>
+              <p className="text-xs text-gray-500">Owner Dashboard</p>
             </div>
           </div>
         </div>
 
-        {/* Navigation */}
+        {/* Navigation with improved density */}
         <nav className="flex-1 p-4">
-          <ul className="space-y-2">
+          <ul className="space-y-1">
             {sidebarItems.map((item) => (
               <li key={item.path}>
                 <NavLink
                   to={item.path}
                   end={item.path === '/app'}
                   className={({ isActive }) =>
-                    `flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors ${
+                    `flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm ${
                       isActive
-                        ? 'bg-primary text-primary-foreground'
-                        : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                        ? 'bg-primary text-primary-foreground shadow-sm'
+                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                     }`
                   }
                 >
@@ -103,12 +103,12 @@ const DashboardLayout = () => {
           </ul>
 
           {/* Reports Section */}
-          <div className="space-y-1 mt-4">
+          <div className="space-y-1 mt-6">
             <button
               onClick={() => setReportsExpanded(!reportsExpanded)}
-              className="flex items-center justify-between w-full px-3 py-2 rounded-lg text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary transition-colors"
+              className="flex items-center justify-between w-full px-3 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
             >
-              <div className="flex items-center space-x-3">
+              <div className="flex items-center gap-3">
                 <BarChart3 className="h-5 w-5" />
                 <span>{t('reports')}</span>
               </div>
@@ -126,10 +126,10 @@ const DashboardLayout = () => {
                     <NavLink
                       to={item.path}
                       className={({ isActive }) =>
-                        `flex items-center space-x-3 px-3 py-2 rounded-lg transition-colors text-sm ${
+                        `flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm ${
                           isActive
                             ? 'bg-primary/10 text-primary font-medium'
-                            : 'text-muted-foreground hover:text-foreground hover:bg-secondary'
+                            : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
                         }`
                       }
                     >
@@ -144,10 +144,10 @@ const DashboardLayout = () => {
         </nav>
 
         {/* Logout */}
-        <div className="p-4 border-t border-border">
+        <div className="p-4 border-t border-gray-200">
           <Button
             variant="ghost"
-            className="w-full justify-start text-muted-foreground hover:text-foreground"
+            className="w-full justify-start text-gray-500 hover:text-gray-900"
             onClick={handleLogout}
           >
             <LogOut className="h-5 w-5 mr-3" />
@@ -158,20 +158,20 @@ const DashboardLayout = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        {/* Top Bar */}
-        <header className="h-16 bg-card border-b border-border px-6 flex items-center justify-between shadow-soft">
+        {/* Enhanced Top Bar */}
+        <header className="h-16 bg-white border-b border-gray-200 px-6 flex items-center justify-between shadow-sm">
           <div>
-            <h2 className="text-xl font-semibold text-foreground">
+            <h2 className="text-xl font-semibold text-gray-900">
               {mockUser?.storeName}
             </h2>
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-gray-600">
               {t('welcome')}, {mockUser?.name}
             </p>
           </div>
           
           <div className="flex items-center space-x-4">
             <Select defaultValue="sv" onValueChange={handleLanguageChange}>
-              <SelectTrigger className="w-32">
+              <SelectTrigger className="w-32 shadow-lg">
                 <Globe className="h-4 w-4 mr-2" />
                 <SelectValue />
               </SelectTrigger>
@@ -183,9 +183,11 @@ const DashboardLayout = () => {
           </div>
         </header>
 
-        {/* Page Content */}
+        {/* Page Content with max-width constraint */}
         <main className="flex-1 p-6">
-          <Outlet />
+          <div className="mx-auto max-w-7xl">
+            <Outlet />
+          </div>
         </main>
       </div>
     </div>

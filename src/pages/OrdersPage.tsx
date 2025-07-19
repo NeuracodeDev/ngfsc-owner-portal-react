@@ -142,9 +142,9 @@ const OrdersPage = () => {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">{t('ordersManagement')}</h1>
-        <p className="text-muted-foreground mt-2">
+      <div className="mt-6">{/* Added top margin for better spacing */}
+        <h1 className="text-3xl font-bold text-gray-900">{t('ordersManagement')}</h1>{/* Darker heading color */}
+        <p className="text-gray-600 mt-2">{/* More neutral secondary text */}
           Spåra och hantera kundbeställningar
         </p>
       </div>
@@ -155,8 +155,8 @@ const OrdersPage = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Total Orders</p>
-                <p className="text-2xl font-bold text-foreground">{orderStats.totalOrders}</p>
+                <p className="text-sm font-semibold text-gray-500">Total Orders</p>{/* Better typography */}
+                <p className="text-2xl font-bold text-gray-900">{orderStats.totalOrders}</p>{/* Darker text */}
               </div>
               <Package className="h-8 w-8 text-primary" />
             </div>
@@ -167,8 +167,8 @@ const OrdersPage = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Total Revenue</p>
-                <p className="text-2xl font-bold text-foreground">{formatCurrency(orderStats.totalRevenue)}</p>
+                <p className="text-sm font-semibold text-gray-500">Total Revenue</p>{/* Better typography */}
+                <p className="text-2xl font-bold text-gray-900">{formatCurrency(orderStats.totalRevenue)}</p>{/* Darker text */}
               </div>
               <DollarSign className="h-8 w-8 text-success" />
             </div>
@@ -179,7 +179,7 @@ const OrdersPage = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Delivered</p>
+                <p className="text-sm font-semibold text-gray-500">Delivered</p>{/* Better typography */}
                 <p className="text-2xl font-bold text-success">{orderStats.deliveredOrders}</p>
               </div>
               <Calendar className="h-8 w-8 text-success" />
@@ -191,7 +191,7 @@ const OrdersPage = () => {
           <CardContent className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-muted-foreground">Pending</p>
+                <p className="text-sm font-semibold text-gray-500">Pending</p>{/* Better typography */}
                 <p className="text-2xl font-bold text-warning">{orderStats.pendingOrders}</p>
               </div>
               <Calendar className="h-8 w-8 text-warning" />
@@ -204,7 +204,7 @@ const OrdersPage = () => {
       <Card className="shadow-elevated border-0">
         <CardHeader>
           <div className="flex items-center justify-between">
-            <CardTitle>Senaste beställningar</CardTitle>
+            <CardTitle className="text-lg font-semibold text-gray-900">Senaste beställningar</CardTitle>{/* Better typography */}
             <div className="relative max-w-sm">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground h-4 w-4" />
               <Input

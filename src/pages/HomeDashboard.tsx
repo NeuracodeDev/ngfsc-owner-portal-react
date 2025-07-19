@@ -43,9 +43,9 @@ const HomeDashboard = () => {
 
   return (
     <div className="space-y-8 animate-fade-in">
-      <div>
-        <h1 className="text-3xl font-bold text-foreground">{t('dashboard')}</h1>
-        <p className="text-muted-foreground mt-2">
+      <div className="mt-6">{/* Added top margin for better spacing */}
+        <h1 className="text-3xl font-bold text-gray-900">{t('dashboard')}</h1>{/* Darker heading color */}
+        <p className="text-gray-600 mt-2">{/* More neutral secondary text */}
           Övervaka din butiks prestanda och AI-rekommendationer
         </p>
       </div>
@@ -56,10 +56,10 @@ const HomeDashboard = () => {
         <Card className="shadow-elevated border-0 bg-gradient-to-br from-card to-card/50 overflow-hidden group hover-scale">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
             <div>
-              <CardTitle className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+              <CardTitle className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{/* Reduced weight, better color */}
                 {t('salesToday')}
               </CardTitle>
-              <div className="text-3xl font-bold text-foreground mt-2">
+              <div className="text-3xl font-bold text-gray-900 mt-2">{/* Darker text */}
                 {salesData ? formatCurrency(salesData.today.revenue) : '—'}
               </div>
             </div>
@@ -69,11 +69,11 @@ const HomeDashboard = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center space-x-2 text-muted-foreground">
+              <div className="flex items-center space-x-2 text-gray-500">{/* Better secondary text color */}
                 <ShoppingCart className="h-4 w-4" />
                 <span>{salesData?.today.orders || 0} {t('orders')}</span>
               </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
+              <div className="flex items-center space-x-2 text-gray-500">{/* Better secondary text color */}
                 <TrendingUp className="h-4 w-4" />
                 <span>
                   {salesData ? formatCurrency(salesData.today.averageOrderValue) : '—'} {t('avg')}
@@ -103,10 +103,10 @@ const HomeDashboard = () => {
         <Card className="shadow-elevated border-0 bg-gradient-to-br from-card to-card/50 overflow-hidden group hover-scale">
           <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
             <div>
-              <CardTitle className="text-sm font-medium text-muted-foreground uppercase tracking-wide">
+              <CardTitle className="text-sm font-semibold text-gray-500 uppercase tracking-wide">{/* Reduced weight, better color */}
                 {t('salesThisWeek')}
               </CardTitle>
-              <div className="text-3xl font-bold text-foreground mt-2">
+              <div className="text-3xl font-bold text-gray-900 mt-2">{/* Darker text */}
                 {salesData ? formatCurrency(salesData.thisWeek.revenue) : '—'}
               </div>
             </div>
@@ -116,11 +116,11 @@ const HomeDashboard = () => {
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="flex items-center justify-between text-sm">
-              <div className="flex items-center space-x-2 text-muted-foreground">
+              <div className="flex items-center space-x-2 text-gray-500">{/* Better secondary text color */}
                 <ShoppingCart className="h-4 w-4" />
                 <span>{salesData?.thisWeek.orders || 0} {t('orders')}</span>
               </div>
-              <div className="flex items-center space-x-2 text-muted-foreground">
+              <div className="flex items-center space-x-2 text-gray-500">{/* Better secondary text color */}
                 <TrendingUp className="h-4 w-4" />
                 <span>
                   {salesData ? formatCurrency(salesData.thisWeek.averageOrderValue) : '—'} {t('avg')}

@@ -95,9 +95,9 @@ const SuggestionList = () => {
   }
 
   return (
-    <Card>
+    <Card className="bg-white shadow-sm hover:shadow-md transition-shadow duration-200 border border-gray-200">
       <CardHeader>
-        <CardTitle className="flex items-center space-x-2">
+        <CardTitle className="flex items-center space-x-2 text-lg font-semibold text-gray-900">
           <span>{t('aiSuggestions')}</span>
           {suggestions.length > 0 && (
             <Badge variant="secondary">{suggestions.length}</Badge>
@@ -106,7 +106,7 @@ const SuggestionList = () => {
       </CardHeader>
       <CardContent>
         {suggestions.length === 0 ? (
-          <div className="text-center py-8 text-muted-foreground">
+          <div className="text-center py-8 text-gray-500">
             Inga väntande förslag för tillfället.
           </div>
         ) : (
@@ -114,7 +114,7 @@ const SuggestionList = () => {
             {suggestions.map((suggestion) => (
               <div
                 key={suggestion.id}
-                className="flex items-start justify-between p-4 border border-border rounded-lg hover:bg-secondary/50 transition-colors"
+                className="flex items-start justify-between p-4 border border-gray-200 rounded-lg hover:bg-gray-50 transition-colors"
               >
                 <div className="flex-1 space-y-2">
                   <div className="flex items-center space-x-2">
@@ -125,16 +125,16 @@ const SuggestionList = () => {
                     >
                       {suggestion.priority} priority
                     </Badge>
-                    <span className="text-xs text-muted-foreground capitalize">
+                    <span className="text-xs text-gray-500 capitalize">
                       {suggestion.type}
                     </span>
                   </div>
                   
-                  <p className="text-sm font-medium text-foreground">
+                  <p className="text-sm font-medium text-gray-900">
                     {suggestion.message}
                   </p>
                   
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-sm text-gray-600">
                     <strong>Proposed action:</strong> {suggestion.proposedAction}
                   </p>
                 </div>
@@ -145,7 +145,7 @@ const SuggestionList = () => {
                     variant="outline"
                     onClick={() => handleApprove(suggestion.id)}
                     disabled={actionLoading === suggestion.id}
-                    className="text-success border-success hover:bg-success hover:text-success-foreground"
+                    className="text-success border-success hover:bg-success hover:text-success-foreground hover-scale"
                   >
                     {actionLoading === suggestion.id ? (
                       <Loader2 className="h-4 w-4 animate-spin" />
@@ -160,7 +160,7 @@ const SuggestionList = () => {
                     variant="outline"
                     onClick={() => handleDecline(suggestion.id)}
                     disabled={actionLoading === suggestion.id}
-                    className="text-destructive border-destructive hover:bg-destructive hover:text-destructive-foreground"
+                    className="text-destructive border-destructive hover:bg-destructive hover:text-destructive-foreground hover-scale"
                   >
                     <X className="h-4 w-4" />
                     {t('decline')}
