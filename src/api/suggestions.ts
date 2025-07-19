@@ -1,12 +1,15 @@
 // Mock AI suggestions API
 export interface Suggestion {
   id: string;
-  type: 'pricing' | 'inventory' | 'promotion' | 'surplus';
+  type: 'pricing' | 'inventory' | 'marketing' | 'operations';
   message: string;
   proposedAction: string;
-  priority: 'high' | 'medium' | 'low';
-  createdAt: string;
+  impact: 'high' | 'medium' | 'low';
+  priority: 'urgent' | 'high' | 'medium' | 'low';
+  category: string;
   status: 'pending' | 'approved' | 'declined';
+  createdAt: Date;
+  estimatedRevenue?: number;
 }
 
 // Mock suggestions data
@@ -14,45 +17,68 @@ const MOCK_SUGGESTIONS: Suggestion[] = [
   {
     id: '1',
     type: 'pricing',
-    message: 'Organic bananas are overpriced compared to market average',
-    proposedAction: 'Reduce price by 15% to $3.49/lb',
+    message: 'Consider reducing the price of Organic Kale by 15% to increase sales velocity',
+    proposedAction: 'Update price from $4.99 to $4.24',
+    impact: 'medium',
     priority: 'high',
-    createdAt: '2024-01-15T10:30:00Z',
-    status: 'pending'
+    category: 'Price Optimization',
+    status: 'pending',
+    estimatedRevenue: 320,
+    createdAt: new Date('2024-01-15'),
   },
   {
     id: '2',
     type: 'inventory',
-    message: 'Low stock alert: Premium olive oil will run out in 2 days',
-    proposedAction: 'Reorder 24 units immediately',
-    priority: 'high',
-    createdAt: '2024-01-15T09:15:00Z',
-    status: 'pending'
+    message: 'Tomato stock is running low (2 days remaining)',
+    proposedAction: 'Reorder 500 units from FreshFarms Co.',
+    impact: 'high',
+    priority: 'urgent',
+    category: 'Stock Management',
+    status: 'pending',
+    estimatedRevenue: 1250,
+    createdAt: new Date('2024-01-14'),
   },
   {
     id: '3',
-    type: 'promotion',
-    message: 'Seasonal vegetables have low turnover this week',
-    proposedAction: 'Create 20% off promotion for root vegetables',
+    type: 'marketing',
+    message: 'Bundle slow-moving herbs together for a "Herb Garden Pack"',
+    proposedAction: 'Create bundle: Basil + Cilantro + Parsley for $8.99',
+    impact: 'medium',
     priority: 'medium',
-    createdAt: '2024-01-15T08:45:00Z',
-    status: 'pending'
+    category: 'Product Bundling',
+    status: 'approved',
+    estimatedRevenue: 180,
+    createdAt: new Date('2024-01-13'),
   },
   {
     id: '4',
-    type: 'surplus',
-    message: 'Excess strawberries approaching expiration date',
-    proposedAction: 'List 15 lbs on surplus marketplace at 30% discount',
-    priority: 'high',
-    createdAt: '2024-01-15T07:20:00Z',
-    status: 'pending'
-  }
+    type: 'operations',
+    message: 'Supplier delivery times have increased by 2 days on average',
+    proposedAction: 'Adjust reorder points to account for longer lead times',
+    impact: 'low',
+    priority: 'low',
+    category: 'Supply Chain',
+    status: 'declined',
+    createdAt: new Date('2024-01-12'),
+  },
+  {
+    id: '5',
+    type: 'inventory',
+    message: 'Seasonal demand spike detected for winter vegetables',
+    proposedAction: 'Increase stock levels for carrots, potatoes, and onions by 40%',
+    impact: 'high',
+    priority: 'urgent',
+    category: 'Seasonal Planning',
+    status: 'pending',
+    estimatedRevenue: 2100,
+    createdAt: new Date('2024-01-16'),
+  },
 ];
 
 export const getSuggestions = async (): Promise<Suggestion[]> => {
   // Simulate API delay
   await new Promise(resolve => setTimeout(resolve, 800));
-  return MOCK_SUGGESTIONS.filter(s => s.status === 'pending');
+  return MOCK_SUGGESTIONS;
 };
 
 export const approveSuggestion = async (id: string): Promise<void> => {
