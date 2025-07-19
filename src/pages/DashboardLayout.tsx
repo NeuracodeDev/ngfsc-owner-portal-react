@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Outlet, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
 import { 
   LayoutDashboard, 
@@ -27,6 +28,7 @@ import {
 } from "@/components/ui/select"
 
 const DashboardLayout = () => {
+  const { t, i18n } = useTranslation();
   // Mock user data for demo
   const mockUser = {
     name: 'John Smith',
@@ -40,20 +42,24 @@ const DashboardLayout = () => {
     navigate('/login');
   };
 
+  const handleLanguageChange = (language: string) => {
+    i18n.changeLanguage(language);
+  };
+
   const sidebarItems = [
-    { label: 'Dashboard', icon: LayoutDashboard, path: '/app' },
-    { label: 'Orders', icon: ShoppingCart, path: '/app/orders' },
-    { label: 'Purchase Orders', icon: FileText, path: '/app/purchase-orders' },
-    { label: 'Inventory', icon: Package, path: '/app/inventory' },
-    { label: 'Suppliers', icon: Users, path: '/app/suppliers' },
-    { label: 'Surplus', icon: Recycle, path: '/app/surplus' },
-    { label: 'AI History', icon: Brain, path: '/app/ai-history' },
-    { label: 'Settings', icon: Settings, path: '/app/settings' },
+    { labelKey: 'dashboard', icon: LayoutDashboard, path: '/app' },
+    { labelKey: 'orders', icon: ShoppingCart, path: '/app/orders' },
+    { labelKey: 'purchaseOrders', icon: FileText, path: '/app/purchase-orders' },
+    { labelKey: 'inventory', icon: Package, path: '/app/inventory' },
+    { labelKey: 'suppliers', icon: Users, path: '/app/suppliers' },
+    { labelKey: 'surplus', icon: Recycle, path: '/app/surplus' },
+    { labelKey: 'aiHistory', icon: Brain, path: '/app/ai-history' },
+    { labelKey: 'settings', icon: Settings, path: '/app/settings' },
   ];
 
   const reportsItems = [
-    { label: 'Sustainability', path: '/app/reports/sustainability' },
-    { label: 'Compliance', path: '/app/compliance' },
+    { labelKey: 'sustainability', path: '/app/reports/sustainability' },
+    { labelKey: 'compliance', path: '/app/compliance' },
   ];
 
   return (
@@ -90,7 +96,7 @@ const DashboardLayout = () => {
                   }
                 >
                   <item.icon className="h-5 w-5" />
-                  <span className="font-medium">{item.label}</span>
+                  <span className="font-medium">{t(item.labelKey)}</span>
                 </NavLink>
               </li>
             ))}
@@ -104,7 +110,7 @@ const DashboardLayout = () => {
             >
               <div className="flex items-center space-x-3">
                 <BarChart3 className="h-5 w-5" />
-                <span>Reports</span>
+                <span>{t('reports')}</span>
               </div>
               {reportsExpanded ? (
                 <ChevronDown className="h-4 w-4" />
@@ -128,7 +134,7 @@ const DashboardLayout = () => {
                       }
                     >
                       <div className="h-1.5 w-1.5 rounded-full bg-current" />
-                      <span>{item.label}</span>
+                      <span>{t(item.labelKey)}</span>
                     </NavLink>
                   </li>
                 ))}
@@ -145,7 +151,7 @@ const DashboardLayout = () => {
             onClick={handleLogout}
           >
             <LogOut className="h-5 w-5 mr-3" />
-            Logout
+            {t('logout')}
           </Button>
         </div>
       </aside>
@@ -159,20 +165,19 @@ const DashboardLayout = () => {
               {mockUser?.storeName}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Welcome back, {mockUser?.name}
+              {t('welcome')}, {mockUser?.name}
             </p>
           </div>
           
           <div className="flex items-center space-x-4">
-            <Select defaultValue="en">
+            <Select defaultValue="sv" onValueChange={handleLanguageChange}>
               <SelectTrigger className="w-32">
                 <Globe className="h-4 w-4 mr-2" />
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
+                <SelectItem value="sv">Svenska</SelectItem>
                 <SelectItem value="en">English</SelectItem>
-                <SelectItem value="es">Español</SelectItem>
-                <SelectItem value="fr">Français</SelectItem>
               </SelectContent>
             </Select>
           </div>
