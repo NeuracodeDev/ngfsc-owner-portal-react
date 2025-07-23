@@ -54,7 +54,7 @@ const DashboardLayout = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 flex">
+    <div className="min-h-screen bg-gray-50 flex w-full">
       {/* Enhanced Sidebar */}
       <aside className="w-60 bg-white border-r border-gray-200 flex flex-col shadow-sm">
         {/* Logo */}
