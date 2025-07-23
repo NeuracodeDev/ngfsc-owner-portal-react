@@ -60,7 +60,7 @@ const DashboardLayout = () => {
         {/* Logo */}
         <div className="p-6 border-b border-gray-200">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-gradient-primary rounded-lg">
+            <div className="p-2 bg-gradient-primary">
               <Leaf className="h-5 w-5 text-primary-foreground" />
             </div>
             <div>
@@ -79,10 +79,10 @@ const DashboardLayout = () => {
                   to={item.path}
                   end={item.path === '/app'}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm ${
+                    `flex items-center gap-3 px-4 py-3 transition-all duration-200 text-sm font-medium ${
                       isActive
-                        ? 'bg-primary text-primary-foreground shadow-sm'
-                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
+                        ? 'bg-primary text-primary-foreground border-l-4 border-primary-glow'
+                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:border-l-4 hover:border-gray-300'
                     }`
                   }
                 >
@@ -129,17 +129,14 @@ const DashboardLayout = () => {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="sv">Svenska</SelectItem>
-                <SelectItem value="en">English</SelectItem>
               </SelectContent>
             </Select>
           </div>
         </header>
 
-        {/* Page Content with max-width constraint */}
+        {/* Page Content - Full width */}
         <main className="flex-1 p-6">
-          <div className="mx-auto max-w-7xl">
-            <Outlet />
-          </div>
+          <Outlet />
         </main>
       </div>
     </div>
