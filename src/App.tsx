@@ -16,7 +16,7 @@ const SurplusPage = lazy(() => import("./pages/SurplusPage"));
 const SettingsPage = lazy(() => import("./pages/SettingsPage"));
 const OrdersPage = lazy(() => import("./pages/OrdersPage"));
 const PurchaseOrdersPage = lazy(() => import("./pages/PurchaseOrdersPage"));
-const SupplierCatalogPage = lazy(() => import("./pages/SupplierCatalogPage"));
+
 const ProductDetailPage = lazy(() => import("./pages/ProductDetailPage"));
 const AIHistoryPage = lazy(() => import("./pages/AIHistoryPage"));
 const SustainabilityReportPage = lazy(() => import("./pages/SustainabilityReportPage"));
@@ -51,7 +51,7 @@ const App = () => (
               <Route path="purchase-orders" element={<PurchaseOrdersPage />} />
               <Route path="inventory" element={<InventoryPage />} />
               <Route path="inventory/:sku" element={<ProductDetailPage />} />
-              <Route path="suppliers" element={<SupplierCatalogPage />} />
+              
               <Route path="surplus" element={<SurplusPage />} />
               <Route path="ai-history" element={<AIHistoryPage />} />
               <Route path="reports/sustainability" element={<SustainabilityReportPage />} />
