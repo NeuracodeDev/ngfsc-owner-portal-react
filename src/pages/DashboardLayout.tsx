@@ -13,11 +13,7 @@ import {
   Globe,
   ShoppingCart,
   FileText,
-  Users,
-  Brain,
-  BarChart3,
-  ChevronDown,
-  ChevronRight
+  Brain
 } from 'lucide-react';
 import {
   Select,
@@ -35,7 +31,7 @@ const DashboardLayout = () => {
     storeName: 'Fresh Market Pro'
   };
   const navigate = useNavigate();
-  const [reportsExpanded, setReportsExpanded] = useState(false);
+  
 
   const handleLogout = async () => {
     // For demo, just navigate to login
@@ -48,19 +44,14 @@ const DashboardLayout = () => {
 
   const sidebarItems = [
     { labelKey: 'dashboard', icon: LayoutDashboard, path: '/app' },
-    { labelKey: 'orders', icon: ShoppingCart, path: '/app/orders' },
+    { labelKey: 'sales', icon: ShoppingCart, path: '/app/orders' },
     { labelKey: 'purchaseOrders', icon: FileText, path: '/app/purchase-orders' },
     { labelKey: 'inventory', icon: Package, path: '/app/inventory' },
-    { labelKey: 'suppliers', icon: Users, path: '/app/suppliers' },
     { labelKey: 'surplus', icon: Recycle, path: '/app/surplus' },
     { labelKey: 'aiHistory', icon: Brain, path: '/app/ai-history' },
     { labelKey: 'settings', icon: Settings, path: '/app/settings' },
   ];
 
-  const reportsItems = [
-    { labelKey: 'sustainability', path: '/app/reports/sustainability' },
-    { labelKey: 'compliance', path: '/app/compliance' },
-  ];
 
   return (
     <div className="min-h-screen bg-gray-50 flex w-full">
@@ -102,45 +93,6 @@ const DashboardLayout = () => {
             ))}
           </ul>
 
-          {/* Reports Section */}
-          <div className="space-y-1 mt-6">
-            <button
-              onClick={() => setReportsExpanded(!reportsExpanded)}
-              className="flex items-center justify-between w-full px-3 py-2 rounded-lg text-sm font-medium text-gray-500 hover:text-gray-900 hover:bg-gray-100 transition-all duration-200"
-            >
-              <div className="flex items-center gap-3">
-                <BarChart3 className="h-5 w-5" />
-                <span>{t('reports')}</span>
-              </div>
-              {reportsExpanded ? (
-                <ChevronDown className="h-4 w-4" />
-              ) : (
-                <ChevronRight className="h-4 w-4" />
-              )}
-            </button>
-            
-            {reportsExpanded && (
-              <ul className="ml-6 space-y-1">
-                {reportsItems.map((item) => (
-                  <li key={item.path}>
-                    <NavLink
-                      to={item.path}
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-200 text-sm ${
-                          isActive
-                            ? 'bg-primary/10 text-primary font-medium'
-                            : 'text-gray-500 hover:text-gray-900 hover:bg-gray-100'
-                        }`
-                      }
-                    >
-                      <div className="h-1.5 w-1.5 rounded-full bg-current" />
-                      <span>{t(item.labelKey)}</span>
-                    </NavLink>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
         </nav>
 
         {/* Logout */}

@@ -6,7 +6,7 @@ const resources = {
     translation: {
       // Navigation
       dashboard: 'Dashboard',
-      orders: 'Orders',
+      sales: 'Sales',
       purchaseOrders: 'Purchase Orders',
       inventory: 'Inventory',
       suppliers: 'Suppliers',
@@ -120,7 +120,7 @@ const resources = {
     translation: {
       // Navigation
       dashboard: 'Instrumentpanel',
-      orders: 'Beställningar',
+      sales: 'Försäljning',
       purchaseOrders: 'Inköpsorder',
       inventory: 'Lager',
       suppliers: 'Leverantörer',
