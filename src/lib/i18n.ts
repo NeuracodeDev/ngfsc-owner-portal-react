@@ -121,7 +121,7 @@ const resources = {
       // Navigation
       dashboard: 'Instrumentpanel',
       sales: 'Försäljning',
-      purchaseOrders: 'Inköpsorder',
+      purchaseOrders: 'Inköp',
       inventory: 'Lager',
       suppliers: 'Leverantörer',
       surplus: 'Överskott',
