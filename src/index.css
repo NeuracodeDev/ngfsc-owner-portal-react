@@ -8,34 +8,34 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* NGFSC Brand Colors - Primary Green #009E3A */
-    --primary: 142 100% 31%;
+    /* DineEarn Brand Colors - Modern Purple Theme */
+    --primary: 258 90% 66%;
     --primary-foreground: 0 0% 98%;
-    --primary-glow: 142 100% 45%;
-    --primary-muted: 142 30% 85%;
+    --primary-glow: 258 100% 76%;
+    --primary-muted: 258 30% 85%;
 
-    /* Neutral System - Clean whites and grays */
-    --background: 210 17% 98%;
-    --foreground: 216 71% 12%;
-    --card: 0 0% 100%;
-    --card-foreground: 216 71% 12%;
+    /* Dark Modern System */
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+    --card: 240 8% 6%;
+    --card-foreground: 0 0% 98%;
     
     /* Muted/Secondary System */
-    --muted: 210 17% 95%;
-    --muted-foreground: 215 16% 47%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 216 71% 12%;
-    --secondary: 210 17% 95%;
-    --secondary-foreground: 216 25% 25%;
+    --muted: 240 6% 10%;
+    --muted-foreground: 240 5% 65%;
+    --popover: 240 8% 6%;
+    --popover-foreground: 0 0% 98%;
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 0 0% 98%;
     
     /* Interactive States */
-    --border: 215 15% 88%;
-    --input: 215 15% 88%;
-    --ring: 142 100% 31%;
-    --accent: 210 20% 90%;
-    --accent-foreground: 216 71% 12%;
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 258 90% 66%;
+    --accent: 240 6% 10%;
+    --accent-foreground: 0 0% 98%;
     
-    /* Status Colors - Enhanced with better contrast */
+    /* Status Colors - Modern variations */
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
     --warning: 38 92% 50%;
@@ -45,11 +45,13 @@ All colors MUST be HSL.
     --info: 199 89% 48%;
     --info-foreground: 0 0% 98%;
     
-    /* Design System Tokens - Enterprise rectangular styling */
-    --radius: 0.25rem;
-    --shadow-soft: 0 4px 20px rgba(0, 158, 58, 0.08);
-    --shadow-elevated: 0 8px 30px rgba(0, 158, 58, 0.12);
+    /* Design System Tokens - Modern styling */
+    --radius: 0.75rem;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 40px rgba(138, 43, 226, 0.2);
     --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-card: linear-gradient(135deg, hsl(240 8% 6%), hsl(240 10% 8%));
     --gradient-success: linear-gradient(135deg, hsl(var(--success)), hsl(142 76% 50%));
     
     /* Sidebar & Layout */
@@ -72,39 +74,39 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 216 71% 6%;
-    --foreground: 210 20% 98%;
-    --card: 216 71% 8%;
-    --card-foreground: 210 20% 98%;
-    --popover: 216 71% 8%;
-    --popover-foreground: 210 20% 98%;
-    --primary: 142 100% 45%;
-    --primary-foreground: 142 33% 6%;
-    --primary-glow: 142 100% 55%;
-    --primary-muted: 142 30% 20%;
-    --secondary: 215 27% 15%;
-    --secondary-foreground: 210 20% 98%;
-    --muted: 215 27% 15%;
-    --muted-foreground: 217 10% 64%;
-    --accent: 215 27% 15%;
-    --accent-foreground: 210 20% 98%;
+    --background: 240 10% 4%;
+    --foreground: 0 0% 98%;
+    --card: 240 8% 6%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 8% 6%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 258 90% 66%;
+    --primary-foreground: 0 0% 98%;
+    --primary-glow: 258 100% 76%;
+    --primary-muted: 258 30% 20%;
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 6% 10%;
+    --muted-foreground: 240 5% 65%;
+    --accent: 240 6% 10%;
+    --accent-foreground: 0 0% 98%;
     --destructive: 0 62% 50%;
-    --destructive-foreground: 210 20% 98%;
+    --destructive-foreground: 0 0% 98%;
     --success: 142 76% 45%;
-    --success-foreground: 210 20% 98%;
-    --border: 215 27% 15%;
-    --input: 215 27% 15%;
-    --ring: 142 100% 45%;
-    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.3);
-    --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.4);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --success-foreground: 0 0% 98%;
+    --border: 240 6% 15%;
+    --input: 240 6% 15%;
+    --ring: 258 90% 66%;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 8px 30px rgba(0, 0, 0, 0.5);
+    --sidebar-background: 240 8% 6%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 258 90% 66%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 6% 10%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 240 6% 15%;
+    --sidebar-ring: 258 90% 66%;
   }
 }
 
@@ -114,7 +116,7 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-gray-50 text-foreground;
+    @apply bg-background text-foreground;
   }
 }
 

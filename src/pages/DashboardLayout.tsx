@@ -54,52 +54,51 @@ const DashboardLayout = () => {
 
 
   return (
-    <div className="min-h-screen bg-gray-50 flex w-full">
-      {/* Enhanced Sidebar */}
-      <aside className="w-60 bg-white border-r border-gray-200 flex flex-col shadow-sm">
+    <div className="min-h-screen bg-background flex w-full">
+      {/* Modern Sidebar */}
+      <aside className="w-60 bg-card border-r border-border flex flex-col shadow-lg">
         {/* Logo */}
-        <div className="p-6 border-b border-gray-200">
+        <div className="p-6 border-b border-border">
           <div className="flex items-center space-x-3">
-            <div className="p-2 bg-gradient-primary">
-              <Leaf className="h-5 w-5 text-primary-foreground" />
+            <div className="p-2 rounded-lg bg-brand-gradient shadow-glow">
+              <Leaf className="h-6 w-6 text-primary-foreground" />
             </div>
             <div>
-              <h1 className="text-lg font-bold text-primary">NGFSC</h1>
-              <p className="text-xs text-gray-500">Owner Dashboard</p>
+              <h1 className="text-xl font-bold bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">DineEarn</h1>
+              <p className="text-xs text-muted-foreground">Restaurant Dashboard</p>
             </div>
           </div>
         </div>
 
-        {/* Navigation with improved density */}
+        {/* Modern Navigation */}
         <nav className="flex-1 p-4">
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {sidebarItems.map((item) => (
               <li key={item.path}>
                 <NavLink
                   to={item.path}
                   end={item.path === '/app'}
                   className={({ isActive }) =>
-                    `flex items-center gap-3 px-4 py-3 transition-all duration-200 text-sm font-medium ${
+                    `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 text-sm font-medium group ${
                       isActive
-                        ? 'bg-primary text-primary-foreground border-l-4 border-primary-glow'
-                        : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50 hover:border-l-4 hover:border-gray-300'
+                        ? 'bg-primary/10 text-primary border border-primary/20 shadow-lg shadow-primary/10'
+                        : 'text-muted-foreground hover:text-foreground hover:bg-muted/50'
                     }`
                   }
                 >
-                  <item.icon className="h-5 w-5" />
+                  <item.icon className="h-5 w-5 transition-colors" />
                   <span className="font-medium">{t(item.labelKey)}</span>
                 </NavLink>
               </li>
             ))}
           </ul>
-
         </nav>
 
         {/* Logout */}
-        <div className="p-4 border-t border-gray-200">
+        <div className="p-4 border-t border-border">
           <Button
             variant="ghost"
-            className="w-full justify-start text-gray-500 hover:text-gray-900"
+            className="w-full justify-start text-muted-foreground hover:text-foreground hover:bg-muted/50"
             onClick={handleLogout}
           >
             <LogOut className="h-5 w-5 mr-3" />
@@ -110,20 +109,20 @@ const DashboardLayout = () => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
-        {/* Enhanced Top Bar */}
-        <header className="h-16 bg-white border-b border-gray-200 px-6 flex items-center justify-between shadow-sm">
+        {/* Modern Top Bar */}
+        <header className="h-16 bg-card border-b border-border px-6 flex items-center justify-between shadow-lg backdrop-blur-sm">
           <div>
-            <h2 className="text-xl font-semibold text-gray-900">
+            <h2 className="text-xl font-semibold text-foreground">
               {mockUser?.storeName}
             </h2>
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-muted-foreground">
               {t('welcome')}, {mockUser?.name}
             </p>
           </div>
           
           <div className="flex items-center space-x-4">
             <Select defaultValue="sv" onValueChange={handleLanguageChange}>
-              <SelectTrigger className="w-32 shadow-lg">
+              <SelectTrigger className="w-32 bg-muted border-border">
                 <Globe className="h-4 w-4 mr-2" />
                 <SelectValue />
               </SelectTrigger>
